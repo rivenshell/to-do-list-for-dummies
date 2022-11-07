@@ -70,14 +70,52 @@ const Home = () => {
 	}
 
 
-
+// 		  .sort((a, b) => a,id > b.id ? 1 : -1)
 	return (
 		<div className="container">
 			<FontAwesomeIcon icon="fa-solid fa-x" />
 			<br /><br />
 		    <h2>To Do List App (ReactJS)</h2>
 			<br /><br />
+
+			{/* update task */}
+			<div className="row">
+				<div className="col">
+					<input 
+						className="form-control form-control-lg"
+					/>
+				</div>
+				<div className="col-auto">
+					<button
+					className="btn btn-lg btn-success mr-20"
+					>Update</button>
+					
+					<button
+					className="btn btn-lg btn-warning"
+					>Cancel</button>
+				</div>
+			</div>
+			<br />
+
+			{/* Add task */}
+			<div className="row">
+				<div className="col">
+					<input 
+					value={newTask}
+					onChange={(e) => setNewTask(e.target.value)}
+					className="form-control form-control-1g"
+					/>
+				</div>
+				<div className="col-auto">
+					<button
+					className="btn btn-1g btn-success">
+					Add Task</button>
+				</div>
+			</div>
+			<br />
+
 			{/*Display ToDos*/}
+
 
 			{toDo && toDo.length ? '' : 'No tasks..'}
 			{toDo && toDo
@@ -92,10 +130,8 @@ const Home = () => {
 						</div>
 							<div className="iconsWarp"> 
 							<span>
-							<FontAwesomeIcon icon="fa-solid fa-x" />
+								<FontAwesomeIcon icon={faTrashCan} />
 							</span>
-							<span></span>
-							<span></span>
 							</div>
 						</div>
 					</React.Fragment>

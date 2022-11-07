@@ -18,10 +18,22 @@ body {
 }
 
 .taskNumber {
-    
+
 }
 
 .taskBg .done {
     text-decoration: line-through;
     opacity: .3;
+}
+
+.iconsWarp {
+    position: absolute ;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: auto;
+}
+
+.taskBg .iconsWarp span:hover {
+    color: red;
 }
