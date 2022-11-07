@@ -38,15 +38,19 @@ const Home = () => {
 	const [newTask, setNewTask] = useState('');
 	const [updateData, setupdateData] = useState('');
 
-	//Add task
-	//////////////////////
+	// Add task
 	const addTask = () => {
-		//
+		if(newTask) {
+			let num = toDo.length + 1;
+			let newEntry = { id: num, title: newTask , status: false}
+			setToDo([...toDo, newEntry])
+			setNewTask('');
+		}
 	}
 	//Deletetask
-	//////////////////////
-	const deletetask = (id) => {
-		//
+	const deleteTask = (id) => {
+		let newTasks = toDo.filter( task => task.id !== id)
+		setToDo(newTasks);
 	}
 	//mark task as done
 	//////////////////////
@@ -75,7 +79,7 @@ const Home = () => {
 		<div className="container">
 			<FontAwesomeIcon icon="fa-solid fa-x" />
 			<br /><br />
-		    <h2>To Do List App (ReactJS)</h2>
+		    <h2>To Do List App</h2>
 			<br /><br />
 
 			{/* update task */}
@@ -108,6 +112,7 @@ const Home = () => {
 				</div>
 				<div className="col-auto">
 					<button
+					onClick={addTask}
 					className="btn btn-1g btn-success">
 					Add Task</button>
 				</div>
@@ -129,7 +134,8 @@ const Home = () => {
 						 <span className= "taskText">{task.title}</span>		
 						</div>
 							<div className="iconsWarp"> 
-							<span>
+							<span title="Delete"
+							onClick={() => deleteTask(task.id)}>
 								<FontAwesomeIcon icon={faTrashCan} />
 							</span>
 							</div>

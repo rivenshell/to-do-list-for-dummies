@@ -37,3 +37,13 @@ body {
 .taskBg .iconsWarp span:hover {
     color: red;
 }
+
+.taskNumber {
+    color: blue;
+    font-size: small;
+}
+
+h2 {
+    text-align: center;
+    color: blue;
+}
