@@ -24,14 +24,22 @@ import { Button } from "react-bootstrap";
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
 
+// document.getElementById("int")
+// .addEventListener("keyup", function(event) {
+// event.preventDefault();
+// if (event.keyCode === 13) {
+// 	document.getElementById("buttonClick").click();
+// }
+// });
+
 //create your first component
 const Home = () => {
 	
 	// Task (list state)
 	// Main state storing tasks
 	const [toDo, setToDo] = useState([
-		{"id": 1, "title": "Task 1", "status": false},
-		{"id": 2, "title": "Task 2", "status": false}
+		// {"id": 1, "title": "Task 1", "status": false},
+		// {"id": 2, "title": '"Task 2"', "status": false}
 	])
 
 	// State
@@ -39,7 +47,8 @@ const Home = () => {
 	const [updateData, setupdateData] = useState('');
 
 	// Add task
-	const addTask = () => {
+	const addTask = (e) => {
+		e.preventDefault()
 		if(newTask) {
 			let num = toDo.length + 1;
 			let newEntry = { id: num, title: newTask , status: false}
@@ -47,34 +56,38 @@ const Home = () => {
 			setNewTask('');
 		}
 	}
+	
 	//Deletetask
 	const deleteTask = (id) => {
 		let newTasks = toDo.filter( task => task.id !== id)
 		setToDo(newTasks);
 	}
-	//mark task as done
-	//////////////////////
-	const markdone = (id) => {
-		//
-	}
-	// cancel update
-	//////////////////////
-	const cancelupdate = (id) => {
-		//
-	}
-	// change task for update
-	//////////////////////
-	const changetask = (id) => {
-		//
-	}
-	// update task
-	//////////////////////
-	const updatetask = (id) => {
-		//
-	}
-
+	// //mark task as done
+	// //////////////////////
+	// const markdone = (id) => {
+	// 	//
+	// }
+	// // cancel update
+	// //////////////////////
+	// const cancelupdate = (id) => {
+	// 	//
+	// }
+	// // change task for update
+	// //////////////////////
+	// const changetask = (id) => {
+	// 	//
+	// }
+	// // update task
+	// //////////////////////
+	// const updatetask = (id) => {
+	// 	//
+	// }
+	
+	// document.getElementById("int")
+	// .addEventListener("keyup", function(event))
 
 // 		  .sort((a, b) => a,id > b.id ? 1 : -1)
+
 	return (
 		<div className="container">
 			<FontAwesomeIcon icon="fa-solid fa-x" />
@@ -83,7 +96,7 @@ const Home = () => {
 			<br /><br />
 
 			{/* update task */}
-			<div className="row">
+			{/* <div className="row">
 				<div className="col">
 					<input 
 						className="form-control form-control-lg"
@@ -99,30 +112,34 @@ const Home = () => {
 					>Cancel</button>
 				</div>
 			</div>
-			<br />
+			<br /> */}
 
 			{/* Add task */}
 			<div className="row">
-				<div className="col">
-					<input 
+				<form className="col" onSubmit={addTask}>
+					<input id="int"
 					value={newTask}
 					onChange={(e) => setNewTask(e.target.value)}
 					className="form-control form-control-1g"
 					/>
-				</div>
+		
 				<div className="col-auto">
-					<button
-					onClick={addTask}
+					<button id="buttonClick"
+					
 					className="btn btn-1g btn-success">
 					Add Task</button>
 				</div>
+				</form>
+
 			</div>
 			<br />
+
+				
 
 			{/*Display ToDos*/}
 
 
-			{toDo && toDo.length ? '' : 'No tasks..'}
+			{toDo && toDo.length ? '' : 'No tasks..Add a Task Senpai'}
 			{toDo && toDo
 			  .map((task, index) => {
 				return(
@@ -146,7 +163,9 @@ const Home = () => {
 			}
 
 		</div>
+		
 	);
+
 };
 
 export default Home;
